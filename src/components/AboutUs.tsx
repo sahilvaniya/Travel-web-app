@@ -19,7 +19,7 @@ export default function AboutUs({ openWhatsApp }: AboutUsProps) {
 
             <p className="text-gray-600 text-base md:text-lg leading-8 mb-6">
               With <span className="font-semibold text-gray-900">15+ years of experience</span> in the travel and cab service industry,
-              Suresh Parmar is dedicated to providing safe, comfortable, and reliable journeys across Ahmedabad, Kutch, and all over Gujarat.
+              Suresh M is dedicated to providing safe, comfortable, and reliable journeys across Ahmedabad, Kutch, and all over Gujarat.
               Whether it’s a local ride, airport transfer, outstation trip, or sharing taxi service, your travel is always in trusted hands.
             </p>
 
@@ -39,10 +39,10 @@ export default function AboutUs({ openWhatsApp }: AboutUsProps) {
             <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6 md:p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-yellow-400 flex items-center justify-center text-white text-3xl font-extrabold shadow-lg">
-                  SP
+                  SM
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Suresh Parmar</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Suresh M</h3>
                   <p className="text-orange-600 font-semibold">Founder & Travel Expert</p>
                   <p className="text-sm text-gray-500">15+ Years of Experience</p>
                 </div>

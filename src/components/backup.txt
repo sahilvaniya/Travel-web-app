@@ -1,0 +1,155 @@
+<div className="mb-10">
+  <div className="flex items-center gap-2 mb-4">
+    <span className="text-2xl">🕒</span>
+    <div>
+      <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+        Daily Pickup Timings
+      </h3>
+      <p className="text-sm text-gray-500">
+        Fixed departure slots for sharing taxi service
+      </p>
+    </div>
+  </div>
+
+  <div className="grid gap-5 lg:grid-cols-2">
+    {/* Kutch to Ahmedabad */}
+    <div className="rounded-3xl border border-orange-100 bg-white p-5 shadow-sm">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <p className="text-xs font-semibold text-orange-600 uppercase tracking-wider">
+            Route 1
+          </p>
+          <h4 className="text-lg font-bold text-gray-900">
+            Kutch → Ahmedabad
+          </h4>
+        </div>
+        <span className="text-3xl">🚕</span>
+      </div>
+
+      <div className="space-y-3">
+        {[
+ {
+  city: "Bhuj",
+  points: "Jubilee Circle • RTO Circle • Madhapar Bus Station",
+  times: ["7:00 AM", "11:00 AM", "3:00 PM", "10:00 PM"],
+},
+{
+  city: "Mundra",
+  points: "Mundra 0 Point",
+  times: timingMap["Mundra 0 Point"],
+},
+          {
+            city: "Anjar",
+            points: "Chitrakut Circle",
+            times: timingMap["Chitrakut Circle"],
+          },
+          {
+            city: "Adipur / Mundra Circle",
+            points: "Adipur / Mundra Circle",
+            times: timingMap["Adipur / Mundra Circle"],
+          },
+          {
+            city: "Gandhidham (Oslo Circle)",
+            points: "Oslo Circle • Main Bus Stand",
+            times: timingMap["Oslo Circle"],
+          },
+          {
+            city: "Bhachau",
+            points: "Bus Station • Highway",
+            times: timingMap["Bus Station"],
+          },
+          {
+            city: "Samkhiyali",
+            points: "Highway Chokdi",
+            times: timingMap["Highway Chokdi"],
+          },
+        ].map((item) => (
+          <div
+            key={item.city}
+            className="rounded-2xl bg-orange-50 border border-orange-100 p-4"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p className="font-bold text-gray-900">{item.city}</p>
+                <p className="text-xs text-gray-500 mt-1">{item.points}</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {item.times.map((time) => (
+                  <span
+                    key={time}
+                    className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-orange-600 border border-orange-200"
+                  >
+                    {time}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Ahmedabad to Kutch */}
+    <div className="rounded-3xl border border-blue-100 bg-white p-5 shadow-sm">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider">
+            Route 2
+          </p>
+          <h4 className="text-lg font-bold text-gray-900">
+            Ahmedabad → Kutch
+          </h4>
+        </div>
+        <span className="text-3xl">🕘</span>
+      </div>
+      <div className="space-y-3">
+        {[
+          {
+            point: "Ahmedabad",
+            note: "City pickup",
+            times: timingMap["Ahmedabad"],
+          },
+          {
+            point: "Kalupur Railway Station",
+            note: "Pickup point",
+            times: timingMap["Kalupur Railway Station"],
+          },
+          {
+            point: "Geeta Mandir Bus Station",
+            note: "Pickup point",
+            times: timingMap["Geeta Mandir Bus Station"],
+          },
+          {
+            point: "Sarkhej Chokdi",
+            note: "Pickup point",
+            times: timingMap["Sarkhej Chokdi"],
+          },
+        ]?.map((item) => (
+          <div
+            key={item.point}
+            className="rounded-2xl bg-blue-50 border border-blue-100 p-4"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <p className="font-bold text-gray-900">{item.point}</p>
+                <p className="text-xs text-gray-500 mt-1">{item.note}</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {item.times.map((time) => (
+                  <span
+                    key={time}
+                    className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-blue-600 border border-blue-200"
+                  >
+                    {time}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

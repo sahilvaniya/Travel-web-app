@@ -478,7 +478,7 @@ _Sharing taxi service is available only for Ahmedabad ⇄ Kutch routes._`;
   point: "Mundra Trip",
   note: "8:00 PM",
   times: ["8:00 PM"],
-},
+},   
         ]?.map((item) => (
           <div
             key={item.point}

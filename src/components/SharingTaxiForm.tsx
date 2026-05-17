@@ -454,11 +454,16 @@ _Sharing taxi service is available only for Ahmedabad ⇄ Kutch routes._`;
       </div>
       <div className="space-y-3">
         {[
+          // {
+          //   point: "Ahmedabad",
+          //   note: "City pickup",
+          //   times: timingMap["Ahmedabad"],
+          // },
           {
-            point: "Ahmedabad",
-            note: "City pickup",
-            times: timingMap["Ahmedabad"],
-          },
+  point: "Ahmedabad Terminal 1 / Terminal 2",
+  note: "Airport pickup",
+    times: timingMap["Ahmedabad"],
+},
           {
             point: "Kalupur Railway Station",
             note: "Pickup point",
@@ -474,11 +479,6 @@ _Sharing taxi service is available only for Ahmedabad ⇄ Kutch routes._`;
             note: "Pickup point",
             times: timingMap["Sarkhej Chokdi"],
           },
-          {
-  point: "Mundra Trip",
-  note: "8:00 PM",
-  times: ["8:00 PM"],
-},   
         ]?.map((item) => (
           <div
             key={item.point}

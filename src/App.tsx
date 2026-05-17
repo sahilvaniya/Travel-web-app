@@ -7,6 +7,7 @@ import BookingForm from "./components/BookingForm";
 import WhatsAppModal from "./components/WhatsAppModal";
 import Footer from "./components/Footer";
 import SharingTaxiForm from "./components/SharingTaxiForm";
+import AboutUs from "./components/AboutUs";
 
 export default function App() {
   const [whatsappModal, setWhatsappModal] = useState<{
@@ -29,6 +30,8 @@ export default function App() {
     <div className="font-poppins">
       <Navbar openWhatsApp={openWhatsApp} />
       <Hero openWhatsApp={openWhatsApp} />
+      <AboutUs openWhatsApp={openWhatsApp} />
+
       <Services />
       <Rates openWhatsApp={openWhatsApp} />
             <SharingTaxiForm openWhatsApp={openWhatsApp} />

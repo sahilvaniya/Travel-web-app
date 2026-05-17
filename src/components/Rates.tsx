@@ -16,20 +16,20 @@ const suvRates = [
   { city: "White Rann", gujarati: "વ્હાઇટરણ", suv: "₹7,500", sedan: "₹6,500", },
 ];
 
-const perKmRates = [
-  { vehicle: "Sedan", model: "Dzire/Etios", rate: "₹12", icon: "🚗", color: "bg-blue-500" },
-  { vehicle: "Ertiga (SUV)", model: "Maruti Ertiga", rate: "₹14", icon: "🚙", color: "bg-orange-500" },
-  { vehicle: "Innova", model: "Toyota Innova", rate: "₹17", icon: "🚐", color: "bg-purple-500" },
-  { vehicle: "Innova Crysta", model: "Premium SUV", rate: "₹20", icon: "👑", color: "bg-yellow-500" },
-  { vehicle: "Tempo Traveller", model: "Force Traveller", rate: "₹35", icon: "🚌", color: "bg-green-500" },
-];
+// const perKmRates = [
+//   { vehicle: "Sedan", model: "Dzire/Etios", rate: "₹12", icon: "🚗", color: "bg-blue-500" },
+//   { vehicle: "Ertiga (SUV)", model: "Maruti Ertiga", rate: "₹14", icon: "🚙", color: "bg-orange-500" },
+//   { vehicle: "Innova", model: "Toyota Innova", rate: "₹17", icon: "🚐", color: "bg-purple-500" },
+//   { vehicle: "Innova Crysta", model: "Premium SUV", rate: "₹20", icon: "👑", color: "bg-yellow-500" },
+//   { vehicle: "Tempo Traveller", model: "Force Traveller", rate: "₹35", icon: "🚌", color: "bg-green-500" },
+// ];
 
 export default function Rates({ openWhatsApp }: RatesProps) {
   return (
     <section id="rates" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-14">
+        {/* <div className="text-center mb-14">
           <span className="inline-block bg-green-100 text-green-600 text-sm font-semibold px-4 py-1.5 rounded-full mb-3">
             💰 Rate List
           </span>
@@ -40,10 +40,10 @@ export default function Rates({ openWhatsApp }: RatesProps) {
             Transparent and affordable fares from Ahmedabad to popular destinations across Gujarat.  
             No hidden charges!
           </p>
-        </div>
+        </div> */}
 
         {/* Per KM Rates */}
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <span className="text-2xl">⚡</span> Per Kilometer Rates
           </h3>
@@ -63,7 +63,7 @@ export default function Rates({ openWhatsApp }: RatesProps) {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Fixed Route Rates Table */}
         <div>

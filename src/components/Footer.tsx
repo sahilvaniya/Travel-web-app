@@ -200,7 +200,7 @@ export default function Footer({ openWhatsApp }: FooterProps) {
       <div className="border-t border-gray-800 py-5 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
           <p className="text-gray-500 text-sm">
-            © 2024 Jay Mogal Cab Service. All rights reserved.
+            © 2026 Jay Mogal Cab Service. All rights reserved.
           </p>
           <p className="text-gray-500 text-sm">
             Made with ❤️ for Gujarat travelers | Ahmedabad, Gujarat

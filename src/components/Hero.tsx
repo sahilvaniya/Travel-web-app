@@ -7,6 +7,10 @@ export default function Hero({ openWhatsApp }: HeroProps) {
     document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToSection = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+};
+
   return (
     <section
       id="home"
@@ -84,7 +88,21 @@ export default function Hero({ openWhatsApp }: HeroProps) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
-
+ <button
+      onClick={() => scrollToSection("sharing-taxi")}
+      className="group w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-2xl shadow-red-500/30 transition-all hover:scale-105 hover:shadow-red-500/50 flex items-center justify-center gap-3"
+    >
+      <span>🚕</span>
+      Sharing Taxi
+      <svg
+        className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </button>
           <button
             onClick={() =>
               openWhatsApp(

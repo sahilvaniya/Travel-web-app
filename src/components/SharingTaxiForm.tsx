@@ -60,6 +60,9 @@ const kutchCities = [
 //   "Airport Terminal 2": ["7:00 AM", "11:00 AM", "2:00 PM", "7:00 PM"],
 // };
 
+
+const ahmedabadTimes = ["7:00 AM", "11:00 AM", "3:00 PM", "8:00 PM", "10:00 PM"];
+
 const timingMap: Record<string, string[]> = {
   // Home pickup
   // Kutch -> Ahmedabad
@@ -79,7 +82,9 @@ const timingMap: Record<string, string[]> = {
   "Highway Chokdi": ["9:30 AM", "1:30 PM", "5:30 PM", "10:30 PM"],
 
   // Ahmedabad -> Kutch
-  Ahmedabad: ["7:00 AM", "11:00 AM", "3:00 PM", "8:00 PM","10:00 PM"],
+  // Ahmedabad: ["7:00 AM", "11:00 AM", "3:00 PM", "8:00 PM","10:00 PM"],
+    "Ahmedabad Terminal 1": ahmedabadTimes,
+  "Ahmedabad Terminal 2": ahmedabadTimes,
   "Kalupur Railway Station": ["7:30 AM", "11:30 AM", "3:30 PM", "8:30 PM"],
   "Geeta Mandir Bus Station": ["8:00 AM", "11:59 AM", "4:00 PM", "9:00 PM"],
   "Sarkhej Chokdi": ["9:00 AM", "1:00 PM", "5:00 PM", "10:00 PM"],
@@ -462,7 +467,8 @@ _Sharing taxi service is available only for Ahmedabad ⇄ Kutch routes._`;
           {
   point: "Ahmedabad Terminal 1 / Terminal 2",
   note: "Airport pickup",
-    times: timingMap["Ahmedabad"],
+    // times: timingMap["Ahmedabad"],
+      times: ahmedabadTimes,
 },
           {
             point: "Kalupur Railway Station",
@@ -730,9 +736,9 @@ _Sharing taxi service is available only for Ahmedabad ⇄ Kutch routes._`;
     ))}
   </select>
 
-  {/* <p className="text-xs text-gray-500 mt-1">
+  <p className="text-xs text-gray-500 mt-1">
     Choose from the fixed pickup timings shown above.
-  </p> */}
+  </p>
 
   {errors.time && <p className="text-red-500 text-xs mt-1">⚠️ {errors.time}</p>}
 </div>

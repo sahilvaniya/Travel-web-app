@@ -61,7 +61,7 @@ const kutchCities = [
 // };
 
 
-const ahmedabadTimes = ["7:00 AM", "11:00 AM", "3:00 PM", "8:00 PM", "10:00 PM"];
+const ahmedabadTimes = ["7:00 AM", "11:00 AM", "3:00 PM", "10:00 PM"];
 
 const timingMap: Record<string, string[]> = {
   // Home pickup
@@ -485,6 +485,11 @@ _Sharing taxi service is available only for Ahmedabad ⇄ Kutch routes._`;
             note: "Pickup point",
             times: timingMap["Sarkhej Chokdi"],
           },
+          {
+  point: "Mundra Trip",
+  note: "8:00 PM",
+  times: ["8:00 PM"],
+},
         ]?.map((item) => (
           <div
             key={item.point}

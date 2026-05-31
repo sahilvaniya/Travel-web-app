@@ -1,4 +1,15 @@
 import { useState } from "react";
+import {
+  CalendarDays,
+  CarFront,
+  Clock3,
+  FileText,
+  MapPin,
+  MessageCircleMore,
+  PhoneCall,
+  Users,
+  ArrowRight,
+} from "lucide-react";
 
 interface BookingFormProps {
   openWhatsApp: (message: string) => void;
@@ -6,41 +17,43 @@ interface BookingFormProps {
 
 export default function BookingForm({ openWhatsApp }: BookingFormProps) {
   const [form, setForm] = useState({
-  name: "",
-  mobile: "",
-  pickup: "",
-  destination: "",
-  tripType: "",   // add this
-  vehicle: "",
-  date: "",
-  time: "",
-  passengers: "",
-  notes: "",
-});
+    name: "",
+    mobile: "",
+    pickup: "",
+    destination: "",
+    tripType: "",
+    vehicle: "",
+    date: "",
+    time: "",
+    passengers: "",
+    notes: "",
+  });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
-  const newErrors: Record<string, string> = {};
-  if (!form.name.trim()) newErrors.name = "Name is required";
-  if (!form.mobile.trim() || !/^[6-9]\d{9}$/.test(form.mobile))
-    newErrors.mobile = "Enter a valid 10-digit mobile number";
-  if (!form.pickup.trim()) newErrors.pickup = "Enter pickup location";
-  if (!form.destination.trim()) newErrors.destination = "Enter destination";
-  if (!form.tripType) newErrors.tripType = "Select trip type";
-  if (!form.vehicle) newErrors.vehicle = "Select a vehicle type";
-  if (!form.date) newErrors.date = "Select a date";
-  if (!form.time) newErrors.time = "Select a time";
-  return newErrors;
-};
+    const newErrors: Record<string, string> = {};
+    if (!form.name.trim()) newErrors.name = "Name is required";
+    if (!form.mobile.trim() || !/^[6-9]\d{9}$/.test(form.mobile))
+      newErrors.mobile = "Enter a valid 10-digit mobile number";
+    if (!form.pickup.trim()) newErrors.pickup = "Enter pickup location";
+    if (!form.destination.trim()) newErrors.destination = "Enter destination";
+    if (!form.tripType) newErrors.tripType = "Select trip type";
+    if (!form.vehicle) newErrors.vehicle = "Select a vehicle type";
+    if (!form.date) newErrors.date = "Select a date";
+    if (!form.time) newErrors.time = "Select a time";
+    return newErrors;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
+
     setErrors({});
 
     const message = `🙏 *JAY MOGAL CAB SERVICE - BOOKING REQUEST*
@@ -51,7 +64,6 @@ export default function BookingForm({ openWhatsApp }: BookingFormProps) {
 📍 *Pickup Location:* ${form.pickup}
 🎯 *Destination:* ${form.destination}
 🛣️ *Trip Type:* ${form.tripType}
-
 
 🚗 *Vehicle:* ${form.vehicle}
 📅 *Date:* ${form.date}
@@ -67,7 +79,9 @@ _Booking received from Jay Mogal Cab Service website_`;
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     if (errors[e.target.name]) {
@@ -87,36 +101,46 @@ _Booking received from Jay Mogal Cab Service website_`;
   const minDate = tomorrow.toISOString().split("T")[0];
 
   return (
-    <section id="booking" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-orange-900">
+    <section
+      id="booking"
+      className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-orange-900"
+    >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="inline-block bg-orange-500/20 border border-orange-400/30 text-orange-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-3">
-            📅 Online Booking
+          <span className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-400/30 text-orange-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-3">
+            <CalendarDays className="w-4 h-4" />
+            Online Booking
           </span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
             Book <span className="text-orange-400">Now</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
-            Fill out the form and we’ll confirm your booking on WhatsApp. Fast & Easy!
+            Fill out the form and we’ll confirm your booking on WhatsApp. Fast &
+            Easy!
           </p>
         </div>
 
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           {/* Top banner */}
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-4 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-2xl">🚖</span>
+              <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center text-white">
+                <CarFront className="w-6 h-6" />
+              </div>
               <div>
                 <p className="text-white font-bold">Jay Mogal Cab Service</p>
-                <p className="text-orange-100 text-sm">24/7 Available • +91 9106178900</p>
+                <p className="text-orange-100 text-sm">
+                  24/7 Available • +91 9106178900
+                </p>
               </div>
             </div>
             <a
               href="tel:9106178900"
               className="bg-white/20 hover:bg-white/30 text-white font-semibold px-4 py-2 rounded-xl text-sm transition-all flex items-center gap-2"
             >
-              📞 Call Now
+              <PhoneCall className="w-4 h-4" />
+              Call Now
             </a>
           </div>
 
@@ -125,7 +149,10 @@ _Booking received from Jay Mogal Cab Service website_`;
               {/* Name */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  👤 Your Name <span className="text-red-500">*</span>
+                  <span className="inline-flex items-center gap-2">
+                    <Users className="w-4 h-4 text-orange-500" />
+                    Your Name <span className="text-red-500">*</span>
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -135,13 +162,18 @@ _Booking received from Jay Mogal Cab Service website_`;
                   placeholder="Enter your name..."
                   className={inputClass("name")}
                 />
-                {errors.name && <p className="text-red-500 text-xs mt-1">⚠️ {errors.name}</p>}
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">⚠️ {errors.name}</p>
+                )}
               </div>
 
               {/* Mobile */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  📱 Mobile Number <span className="text-red-500">*</span>
+                  <span className="inline-flex items-center gap-2">
+                    <PhoneCall className="w-4 h-4 text-orange-500" />
+                    Mobile Number <span className="text-red-500">*</span>
+                  </span>
                 </label>
                 <input
                   type="tel"
@@ -152,13 +184,18 @@ _Booking received from Jay Mogal Cab Service website_`;
                   maxLength={10}
                   className={inputClass("mobile")}
                 />
-                {errors.mobile && <p className="text-red-500 text-xs mt-1">⚠️ {errors.mobile}</p>}
+                {errors.mobile && (
+                  <p className="text-red-500 text-xs mt-1">⚠️ {errors.mobile}</p>
+                )}
               </div>
 
               {/* Pickup */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  📍 Pickup Location <span className="text-red-500">*</span>
+                  <span className="inline-flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-orange-500" />
+                    Pickup Location <span className="text-red-500">*</span>
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -168,13 +205,18 @@ _Booking received from Jay Mogal Cab Service website_`;
                   placeholder="Enter pickup address..."
                   className={inputClass("pickup")}
                 />
-                {errors.pickup && <p className="text-red-500 text-xs mt-1">⚠️ {errors.pickup}</p>}
+                {errors.pickup && (
+                  <p className="text-red-500 text-xs mt-1">⚠️ {errors.pickup}</p>
+                )}
               </div>
 
               {/* Destination */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  🎯 Destination <span className="text-red-500">*</span>
+                  <span className="inline-flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-orange-500" />
+                    Destination <span className="text-red-500">*</span>
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -184,32 +226,47 @@ _Booking received from Jay Mogal Cab Service website_`;
                   placeholder="Enter destination..."
                   className={inputClass("destination")}
                 />
-                {errors.destination && <p className="text-red-500 text-xs mt-1">⚠️ {errors.destination}</p>}
+                {errors.destination && (
+                  <p className="text-red-500 text-xs mt-1">
+                    ⚠️ {errors.destination}
+                  </p>
+                )}
               </div>
-<div>
-  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-    🛣️ Trip Type <span className="text-red-500">*</span>
-  </label>
-  <select
-    name="tripType"
-    value={form.tripType}
-    onChange={handleChange}
-    className={inputClass("tripType")}
-  >
-    <option value="">-- Select Trip Type --</option>
-    <option value="One Way Trip">One Way Trip</option>
-    <option value="Round Trip">Round Trip</option>
-  </select>
-  {errors.tripType && (
-    <p className="text-red-500 text-xs mt-1">⚠️ {errors.tripType}</p>
-  )}
-</div>
+
+              {/* Trip Type */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  <span className="inline-flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4 text-orange-500" />
+                    Trip Type <span className="text-red-500">*</span>
+                  </span>
+                </label>
+                <select
+                  name="tripType"
+                  value={form.tripType}
+                  onChange={handleChange}
+                  className={inputClass("tripType")}
+                >
+                  <option value="">-- Select Trip Type --</option>
+                  <option value="One Way Trip">One Way Trip</option>
+                  <option value="Round Trip">Round Trip</option>
+                </select>
+                {errors.tripType && (
+                  <p className="text-red-500 text-xs mt-1">
+                    ⚠️ {errors.tripType}
+                  </p>
+                )}
+              </div>
+
               {/* Vehicle */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  🚗 Vehicle Type <span className="text-red-500">*</span>
+                  <span className="inline-flex items-center gap-2">
+                    <CarFront className="w-4 h-4 text-orange-500" />
+                    Vehicle Type <span className="text-red-500">*</span>
+                  </span>
                 </label>
-                
+
                 <select
                   name="vehicle"
                   value={form.vehicle}
@@ -217,23 +274,40 @@ _Booking received from Jay Mogal Cab Service website_`;
                   className={inputClass("vehicle")}
                 >
                   <option value="">-- Select Vehicle --</option>
-                  <option value="" disabled className="text-orange-600">
-One Way: Only Gujarat routes include kilometer charges. </option>
-<option value="" disabled className="text-orange-600">
-Outstation: Toll tax and parking charges are extra.  </option>
-                  <option value="Sedan (Dzire/Etios) - ₹12/km">🚗 Sedan (Dzire/Etios) – ₹12/km</option>
-                  <option value="SUV Ertiga - ₹14/km">🚙 SUV Ertiga – ₹14/km</option>
-                  <option value="Innova - ₹17/km">🚐 Innova – ₹17/km</option>
-                  <option value="Innova Crysta - ₹20/km">👑 Innova Crysta – ₹20/km</option>
-                  <option value="Tempo Traveller - ₹35/km">🚌 Tempo Traveller – ₹35/km</option>
+                  <option disabled className="text-orange-600">
+                    One Way: Only Gujarat routes include kilometer charges.
+                  </option>
+                  <option disabled className="text-orange-600">
+                    Outstation: Toll tax and parking charges are extra.
+                  </option>
+                  <option value="Sedan (Dzire/Etios) - ₹12/km">
+                    Sedan (Dzire/Etios) – ₹12/km
+                  </option>
+                  <option value="SUV Ertiga - ₹14/km">
+                    SUV Ertiga – ₹14/km
+                  </option>
+                  <option value="Innova - ₹17/km">Innova – ₹17/km</option>
+                  <option value="Innova Crysta - ₹20/km">
+                    Innova Crysta – ₹20/km
+                  </option>
+                  <option value="Tempo Traveller - ₹35/km">
+                    Tempo Traveller – ₹35/km
+                  </option>
                 </select>
-                {errors.vehicle && <p className="text-red-500 text-xs mt-1">⚠️ {errors.vehicle}</p>}
+                {errors.vehicle && (
+                  <p className="text-red-500 text-xs mt-1">
+                    ⚠️ {errors.vehicle}
+                  </p>
+                )}
               </div>
 
               {/* Passengers */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  👥 Number of Passengers
+                  <span className="inline-flex items-center gap-2">
+                    <Users className="w-4 h-4 text-orange-500" />
+                    Number of Passengers
+                  </span>
                 </label>
                 <select
                   name="passengers"
@@ -242,19 +316,23 @@ Outstation: Toll tax and parking charges are extra.  </option>
                   className={inputClass("passengers")}
                 >
                   <option value="">-- Select Number --</option>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13,14,15,16,17].map((n) => (
-                    <option key={n} value={n}>
-                      {n} Passenger{n > 1 ? "s" : ""}
-                    </option>
-                  ))}
-                  {/* <option value="13+">13+ Passengers</option> */}
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(
+                    (n) => (
+                      <option key={n} value={n}>
+                        {n} Passenger{n > 1 ? "s" : ""}
+                      </option>
+                    )
+                  )}
                 </select>
               </div>
 
               {/* Date */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  📅 Travel Date <span className="text-red-500">*</span>
+                  <span className="inline-flex items-center gap-2">
+                    <CalendarDays className="w-4 h-4 text-orange-500" />
+                    Travel Date <span className="text-red-500">*</span>
+                  </span>
                 </label>
                 <input
                   type="date"
@@ -264,13 +342,18 @@ Outstation: Toll tax and parking charges are extra.  </option>
                   min={minDate}
                   className={inputClass("date")}
                 />
-                {errors.date && <p className="text-red-500 text-xs mt-1">⚠️ {errors.date}</p>}
+                {errors.date && (
+                  <p className="text-red-500 text-xs mt-1">⚠️ {errors.date}</p>
+                )}
               </div>
 
               {/* Time */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  ⏰ Pickup Time <span className="text-red-500">*</span>
+                  <span className="inline-flex items-center gap-2">
+                    <Clock3 className="w-4 h-4 text-orange-500" />
+                    Pickup Time <span className="text-red-500">*</span>
+                  </span>
                 </label>
                 <input
                   type="time"
@@ -279,13 +362,18 @@ Outstation: Toll tax and parking charges are extra.  </option>
                   onChange={handleChange}
                   className={inputClass("time")}
                 />
-                {errors.time && <p className="text-red-500 text-xs mt-1">⚠️ {errors.time}</p>}
+                {errors.time && (
+                  <p className="text-red-500 text-xs mt-1">⚠️ {errors.time}</p>
+                )}
               </div>
 
               {/* Notes */}
               <div className="md:col-span-2">
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  📝 Additional Notes (Optional)
+                  <span className="inline-flex items-center gap-2">
+                    <FileText className="w-4 h-4 text-orange-500" />
+                    Additional Notes (Optional)
+                  </span>
                 </label>
                 <textarea
                   name="notes"
@@ -309,19 +397,19 @@ Outstation: Toll tax and parking charges are extra.  </option>
                 </svg>
                 Send Booking via WhatsApp
               </button>
+
               <a
                 href="tel:9106178900"
                 className="flex-1 sm:flex-none bg-orange-500 hover:bg-orange-600 text-white font-bold text-base py-4 px-6 rounded-2xl transition-all hover:scale-[1.02] flex items-center justify-center gap-3"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                 Call Now
+                <PhoneCall className="w-5 h-5" />
+                Call Now
               </a>
             </div>
 
             <p className="text-gray-400 text-xs text-center mt-4">
-              🔒 Your information is safe with us. We will contact you only for booking confirmation.
+              🔒 Your information is safe with us. We will contact you only for
+              booking confirmation.
             </p>
           </form>
         </div>

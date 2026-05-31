@@ -38,12 +38,6 @@ export default function App() {
                <div className="mb-[80px] bg-yellow-50 border border-yellow-200 rounded-2xl p-5 flex gap-3">
           <span className="text-2xl flex-shrink-0">ℹ️</span>
           <div>
-            {/* <p className="font-bold text-yellow-800 mb-1">Note:</p>
-            <ul className="text-yellow-700 text-sm space-y-1 list-disc list-inside">
-              <li>Different rates apply for return trips.</li>
-              <li>Tolls, parking, and state taxes are extra.</li>
-              <li>Night charges (10 PM - 6 AM) may be applicable.</li>
-            </ul> */}
                <p className="font-bold text-yellow-800 mb-1">Note:</p>
     <ul className="text-yellow-700 text-sm space-y-1 list-disc list-inside">
       <li><strong>Round Trip:</strong> Average 300 km per day.</li>
